@@ -1,0 +1,8 @@
+Tại sao phải truyền Header X-Forwarded-For?
+- Nếu không truyền thì backend chỉ nhìn thấy IP của Nginx
+- Vì Nginx hoạt động trung gian, khi client gửi request tới, Nginx sẽ nhận và tạo một kết nối
+tcp mới để gọi tới backend
+- Tác dụng của X-Forwarded-For: Việc cấu hình chỉ thị này ép Nginx phải ghim IP thật của
+người dùng vào trong header trước khi chuyển tiếp, để backend sau khi nhận được request
+có thể bóc header này để biết IP thực tế, giúp hệ thống thực hiện chính xác các nghiệp vụ
+chống spam
